@@ -1,22 +1,12 @@
-# GladNet.PhotonServer (GladNet2)
+# Uniful
 
-GladNet2 is Message based networking API library for Unity3D/.Net developers. Defines an API from which other lowerlevel network libraries can be adapted to. This particular repo are the adapters and implementation of the GladNet2 API for PhotonServer SDK.
-
-Come chat: [![https://gitter.im/HelloKitty/GladNet2.0y](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/HelloKitty/GladNet2.0?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
-
-## Implementations
-
-GladNet2 API: https://github.com/HelloKitty/GladNet2.0
-
-Lidgren's: https://github.com/HelloKitty/GladNet2-Lidgren
-
-Photon Server's: https://github.com/HelloKitty/GladNet.PhotonServer
+Uniful is a class library collection of useful MonoBehaviour components. These components often preform generic purposes for use in any type of game. Often these components are an exposing of Unity3D API to the inspector for designers to better build scenes without programmer input.
 
 ## Setup
 
 To use this project you'll first need a couple of things:
   - Visual Studio 2015
-  - Add Nuget Feed https://www.myget.org/F/hellokitty/api/v2 in VS (Options -> NuGet -> Package Sources)
+  - Unity3D
 
 ## Builds
 
@@ -24,15 +14,7 @@ Available on a Nuget Feed: https://www.myget.org/F/hellokitty/api/v2 [![hellokit
 
 ##Tests
 
-#### Linux/Mono - Unit Tests
-||Debug x86|Debug x64|Release x86|Release x64|
-|:--:|:--:|:--:|:--:|:--:|:--:|
-|**master**| N/A | N/A | N/A | [![Build Status](https://travis-ci.org/HelloKitty/GladNet.PhotonServer.svg?branch=master)](https://travis-ci.org/HelloKitty/GladNet.PhotonServer) |
-|**dev**| N/A | N/A | N/A | [![Build Status](https://travis-ci.org/HelloKitty/GladNet.PhotonServer.svg?branch=dev)](https://travis-ci.org/HelloKitty/GladNet.PhotonServer)|
-
-#### Windows - Unit Tests
-
-(Done locally)
+Testing of external Unity3D libraries is generally not possible. Refer to: https://github.com/HelloKitty/Testity as an incomplete solution to this important problem.
 
 ##Licensing
 
