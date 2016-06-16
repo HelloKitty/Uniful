@@ -35,16 +35,16 @@ namespace Uniful
 		/// If false <see cref="Update"/> is used.
 		/// These a magic Unity methods so review that documentation.
 		/// </summary>
-		[SerializeField]
 #pragma warning disable 0649
+		[SerializeField]
 		protected bool _useFixedUpdate;
 #pragma warning restore 0649
 
 		/// <summary>
 		/// Indicates if this component should be destroyed on lerp finished.
 		/// </summary>
-		[SerializeField]
 #pragma warning disable 0649
+		[SerializeField]
 		protected bool _DestroyOnFinished;
 #pragma warning restore 0649
 

@@ -21,8 +21,8 @@ namespace Uniful
 		/// </summary>
 		public override Vector3 CurrentValue { get { return _CurrentValue; } }
 
-		[SerializeField]
 #pragma warning disable 0649
+		[SerializeField]
 		private Vector3 _StartingValue;
 #pragma warning restore 0649
 		/// <summary>
@@ -30,8 +30,8 @@ namespace Uniful
 		/// </summary>
 		public override Vector3 StartingValue { get { return _StartingValue; } }
 
-		[SerializeField]
 #pragma warning disable 0649
+		[SerializeField]
 		private Vector3 _TargetValue;
 #pragma warning restore 0649
 		/// <summary>

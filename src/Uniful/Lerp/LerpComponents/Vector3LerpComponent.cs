@@ -21,8 +21,8 @@ namespace Uniful.Lerp.LerpComponents
 		/// </summary>
 		public override Color CurrentValue { get { return _CurrentValue; } }
 
-		[SerializeField]
 #pragma warning disable 0649
+		[SerializeField]
 		private Color _StartingValue;
 #pragma warning restore 0649
 		/// <summary>
@@ -30,8 +30,8 @@ namespace Uniful.Lerp.LerpComponents
 		/// </summary>
 		public override Color StartingValue { get { return _StartingValue; } }
 
-		[SerializeField]
 #pragma warning disable 0649
+		[SerializeField]
 		private Color _TargetValue;
 #pragma warning restore 0649
 		/// <summary>

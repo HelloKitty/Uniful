@@ -22,8 +22,10 @@ namespace Uniful
 		/// <summary>
 		/// Exposes a callback list for subscribers to listen for when the <see cref="AudioSource"/> stops playing.
 		/// </summary>
+#pragma warning disable 0649
 		[SerializeField]
 		private UnityEvent OnAudioStoppedPlayingEvent;
+#pragma warning restore 0649
 
 		/// <summary>
 		/// Internally tracked <see cref="AudioSource"/> component.
