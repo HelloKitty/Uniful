@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace Uniful.Lerp.LerpComponents
+namespace Uniful
 {
 	/// <summary>
 	/// Component exposes Vector3 lerping options and functionality to the Unity3D
