@@ -1,0 +1,125 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using UnityEngine;
+using UnityEngine.Events;
+
+namespace Uniful
+{
+	/// <summary>
+	/// Abstract type for all lerping components. Inheritors expose lerping options and functionality to the Unity3D
+	/// inspector. They provide an event-based callback for value changes during lerps utilizing the <see cref="UnityEngine.Events.UnityEvent"/> types.
+	/// Provide designers a way to create simple lerping behaviours that programmers would otherwise need to implement in cumbersome and coupled classes
+	/// for designers.
+	/// </summary>
+	/// <typeparam name="TLerpType">The type of lerp value.</typeparam>
+	public abstract class LerpBaseComponent<TLerpType> : MonoBehaviour, ILerpValueQueryable<TLerpType>
+	{
+		/// <summary>
+		/// Serializable generic event class that acts as a hack for Unity3D to serialize the event to the
+		/// inspector.
+		/// </summary>
+		[Serializable]
+		public class LerpValueChangedEvent : UnityEvent<TLerpType> { }
+
+		/// <summary>
+		/// Serialized event object that maintains the list of object reference and methods to invoke.
+		/// </summary>
+		[SerializeField]
+		private LerpValueChangedEvent OnValueChanged = new LerpValueChangedEvent();
+
+		//TODO: If needed a property can be made to expose these in code.
+		/// <summary>
+		/// Indicates if <see cref="FixedUpdate"/> should be used.
+		/// If false <see cref="Update"/> is used.
+		/// These a magic Unity methods so review that documentation.
+		/// </summary>
+		[SerializeField]
+#pragma warning disable 0649
+		protected bool _useFixedUpdate;
+#pragma warning restore 0649
+
+		/// <summary>
+		/// Indicates if this component should be destroyed on lerp finished.
+		/// </summary>
+		[SerializeField]
+#pragma warning disable 0649
+		protected bool _DestroyOnFinished;
+#pragma warning restore 0649
+
+		/// <summary>
+		/// Indicates if the lerp component is currently running a lerp.
+		/// </summary>
+		[HideInInspector]
+		public bool isRunning { get; protected set; } = false;
+
+		//We need to serialize this service so it can be configured by consumers in the Unity3D inspector.
+		[SerializeField]
+		protected readonly LerpTimeService lerpTimerService = new LerpTimeService();
+
+		/// <summary>
+		/// Current value of the lerp.
+		/// </summary>
+		public abstract TLerpType CurrentValue { get; }
+
+		/// <summary>
+		/// Starting value from which the lerp begins from.
+		/// </summary>
+		public abstract TLerpType StartingValue { get; }
+
+		/// <summary>
+		/// Target end value for the lerp.
+		/// </summary>
+		public abstract TLerpType TargetValue { get; }
+
+		/// <summary>
+		/// Inheritor will implement the lerp loop, or lerp logic, for the given <see cref="TLerpType"/>.
+		/// This can not be written generically.
+		/// </summary>
+		protected abstract TLerpType ComputeNextLerpValue();
+
+		/// <summary>
+		/// Update loop that will move the lerp forward if non-fixed update.
+		/// </summary>
+		protected void Update()
+		{
+			if (this._useFixedUpdate)
+				return;
+
+			UpdateLogic();
+		}
+
+		/// <summary>
+		/// FixedUpdate loop that will move the lerp forward if fixed update.
+		/// </summary>
+		protected void FixedUpdate()
+		{
+			if (this._useFixedUpdate)
+				UpdateLogic();
+		}
+
+		/// <summary>
+		/// Handles lerp logic and destruction of the component on finish if desired.
+		/// </summary>
+		private void UpdateLogic()
+		{
+			if (isRunning && !lerpTimerService.Finished)
+			{
+				//Tick the lerp forward and broadcast changed value.
+				//For now assume change during lerping.
+				TLerpType lerpValue = ComputeNextLerpValue();
+
+				if (OnValueChanged != null)
+					OnValueChanged.Invoke(lerpValue);
+			}
+
+			if (lerpTimerService.Finished && _DestroyOnFinished)
+				Destroy(this);
+
+			//We should step the time forward for the next update call so
+			//the lerp can continue.
+			lerpTimerService.StepTimeForward();
+		}
+	}
+}
