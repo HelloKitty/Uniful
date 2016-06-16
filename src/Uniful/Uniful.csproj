@@ -29,6 +29,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Editor|AnyCPU'">
+    <OutputPath>bin\Editor\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UNITY_EDITOR</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -36,10 +40,29 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\lib\Unity\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\lib\Unity\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audio\OnAudioStoppedPlaying.cs" />
+    <Compile Include="GameObject\Transformation\RotateGameObject.cs" />
+    <Compile Include="Lerp\LerpComponents\ColorLerpComponent.cs" />
+    <Compile Include="Lerp\LerpComponents\Vector3LerpComponent.cs" />
+    <Compile Include="Lerp\LerpComponents\FloatLerpComponent.cs" />
+    <Compile Include="Lerp\ILerpValueQueryable.cs" />
+    <Compile Include="Lerp\LerpBaseComponent.cs" />
+    <Compile Include="Lerp\LerpTimeService.cs" />
+    <Compile Include="Level\LoadNewLevel.cs" />
+    <Compile Include="Level\OnLevelLoad.cs" />
+    <Compile Include="Level\OnSceneStart.cs" />
+    <Compile Include="Media\MovieMaterialManager .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
