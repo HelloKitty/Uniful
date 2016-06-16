@@ -21,13 +21,12 @@ namespace Uniful
 		/// inspector.
 		/// </summary>
 		[Serializable]
-		public class LerpValueChangedEvent : UnityEvent<TLerpType> { }
+		public abstract class LerpValueChangedEvent : UnityEvent<TLerpType> { }
 
 		/// <summary>
 		/// Serialized event object that maintains the list of object reference and methods to invoke.
 		/// </summary>
-		[SerializeField]
-		private LerpValueChangedEvent OnValueChanged = new LerpValueChangedEvent();
+		protected abstract LerpValueChangedEvent OnValueChanged { get; }
 
 		//TODO: If needed a property can be made to expose these in code.
 		/// <summary>
@@ -56,7 +55,7 @@ namespace Uniful
 
 		//We need to serialize this service so it can be configured by consumers in the Unity3D inspector.
 		[SerializeField]
-		protected readonly LerpTimeService lerpTimerService = new LerpTimeService();
+		protected LerpTimeService lerpTimerService;
 
 		/// <summary>
 		/// Current value of the lerp.
@@ -78,6 +77,16 @@ namespace Uniful
 		/// This can not be written generically.
 		/// </summary>
 		protected abstract TLerpType ComputeNextLerpValue();
+
+		public void StartLerp()
+		{
+			isRunning = true;
+		}
+
+		public void PauseLerp()
+		{
+			isRunning = false;
+		}
 
 		/// <summary>
 		/// Update loop that will move the lerp forward if non-fixed update.

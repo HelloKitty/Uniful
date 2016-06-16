@@ -50,8 +50,8 @@
   <ItemGroup>
     <Compile Include="Audio\OnAudioStoppedPlaying.cs" />
     <Compile Include="GameObject\Transformation\RotateGameObject.cs" />
-    <Compile Include="Lerp\LerpComponents\Vector3LerpComponent.cs" />
     <Compile Include="Lerp\LerpComponents\ColorLerpComponent.cs" />
+    <Compile Include="Lerp\LerpComponents\Vector3LerpComponent.cs" />
     <Compile Include="Lerp\LerpComponents\FloatLerpComponent.cs" />
     <Compile Include="Lerp\ILerpValueQueryable.cs" />
     <Compile Include="Lerp\LerpBaseComponent.cs" />

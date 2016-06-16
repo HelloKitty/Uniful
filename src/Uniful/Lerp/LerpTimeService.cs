@@ -9,6 +9,7 @@ namespace Uniful
 	/// <summary>
 	/// Timer service for lerps that take input for timing setup and tick time forward when requested.
 	/// </summary>
+	[Serializable]
 	public class LerpTimeService
 	{
 		/// <summary>

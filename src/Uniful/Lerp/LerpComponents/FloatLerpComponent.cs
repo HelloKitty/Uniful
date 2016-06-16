@@ -13,6 +13,11 @@ namespace Uniful
 	/// for designers.
 	public class FloatLerpComponent : LerpBaseComponent<float>
 	{
+		//Due to issues with Unity3D not serializing generics, even when using the UnityEvent generic hack, we must
+		//create a subtype in each lerpcomponent
+		[Serializable]
+		private class LerpEventHack : LerpValueChangedEvent { }
+
 #pragma warning disable 0649
 		private float _CurrentValue;
 #pragma warning restore 0649
@@ -38,6 +43,16 @@ namespace Uniful
 		/// Target end value for the lerp.
 		/// </summary>
 		public override float TargetValue { get { return _StartingValue; } }
+
+		[SerializeField]
+		private LerpEventHack _OnValueChanged;
+		protected override LerpValueChangedEvent OnValueChanged
+		{
+			get
+			{
+				return _OnValueChanged;
+			}
+		}
 
 		protected override float ComputeNextLerpValue()
 		{
