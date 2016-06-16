@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace Assets.Animation
+namespace Uniful
 {
 	/// <summary>
 	/// Exposes Unity3D API for GameObject transform rotation.
