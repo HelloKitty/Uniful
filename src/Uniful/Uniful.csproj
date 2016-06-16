@@ -43,8 +43,17 @@
     <Reference Include="UnityEngine">
       <HintPath>..\..\lib\Unity\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\lib\Unity\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lerp\LerpComponents\Vector3LerpComponent.cs" />
+    <Compile Include="Lerp\LerpComponents\ColorLerpComponent.cs" />
+    <Compile Include="Lerp\LerpComponents\FloatLerpComponent.cs" />
+    <Compile Include="Lerp\ILerpValueQueryable.cs" />
+    <Compile Include="Lerp\LerpBaseComponent.cs" />
+    <Compile Include="Lerp\LerpTimeService.cs" />
     <Compile Include="Level\OnLevelLoad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
