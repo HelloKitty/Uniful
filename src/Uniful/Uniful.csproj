@@ -55,7 +55,9 @@
     <Compile Include="Lerp\ILerpValueQueryable.cs" />
     <Compile Include="Lerp\LerpBaseComponent.cs" />
     <Compile Include="Lerp\LerpTimeService.cs" />
+    <Compile Include="Level\LoadNewLevel.cs" />
     <Compile Include="Level\OnLevelLoad.cs" />
+    <Compile Include="Level\OnSceneStart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
