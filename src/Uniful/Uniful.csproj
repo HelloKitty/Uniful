@@ -59,6 +59,7 @@
     <Compile Include="Level\LoadNewLevel.cs" />
     <Compile Include="Level\OnLevelLoad.cs" />
     <Compile Include="Level\OnSceneStart.cs" />
+    <Compile Include="Media\MovieMaterialManager .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
