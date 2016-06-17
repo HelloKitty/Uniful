@@ -28,6 +28,13 @@ namespace Uniful
 		/// </summary>
 		protected abstract LerpValueChangedEvent OnValueChanged { get; }
 
+		/// <summary>
+		/// Serialized event object that maintains a list of object reference and methods to invoke.
+		/// Invokes when the lerp finishes.
+		/// </summary>
+		[SerializeField]
+		private UnityEvent OnLerpEnded;
+
 		//TODO: If needed a property can be made to expose these in code.
 		/// <summary>
 		/// Indicates if <see cref="FixedUpdate"/> should be used.
@@ -127,6 +134,11 @@ namespace Uniful
 
 				if (OnValueChanged != null)
 					OnValueChanged.Invoke(lerpValue);
+
+				//Could be finished here, best place to check it
+				if (lerpTimerService.Finished)
+					if (OnLerpEnded != null)
+						OnLerpEnded.Invoke();
 			}
 
 			if (lerpTimerService.Finished && _DestroyOnFinished)
