@@ -22,7 +22,7 @@ namespace Uniful
 		/// Serializable hack for UnityEvent.
 		/// </summary>
 #pragma warning disable 0649
-		[SerializeField]
+		[Serializable]
 		public class Event : UnityEvent<KeyCode> { }
 #pragma warning restore 0649
 
