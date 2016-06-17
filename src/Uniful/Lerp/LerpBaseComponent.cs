@@ -87,6 +87,11 @@ namespace Uniful
 
 		public void StartLerp()
 		{
+			//It's probably a good idea to set the current value to the start value
+			//When a start is requested since time will tick forward first call
+			if (OnValueChanged != null)
+				OnValueChanged.Invoke(StartingValue);
+
 			isRunning = true;
 		}
 
