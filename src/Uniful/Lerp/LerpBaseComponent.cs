@@ -121,14 +121,17 @@ namespace Uniful
 
 				if (OnValueChanged != null)
 					OnValueChanged.Invoke(lerpValue);
+				
+				//This MUST be done inside this condition
+				//Otherwise it will step time forward since scene start.
+				//We should step the time forward for the next update call so
+				//the lerp can continue.
+				lerpTimerService.StepTimeForward();
 			}
 
 			if (lerpTimerService.Finished && _DestroyOnFinished)
 				Destroy(this);
 
-			//We should step the time forward for the next update call so
-			//the lerp can continue.
-			lerpTimerService.StepTimeForward();
 		}
 	}
 }
