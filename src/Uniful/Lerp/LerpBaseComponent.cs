@@ -115,6 +115,12 @@ namespace Uniful
 		{
 			if (isRunning && !lerpTimerService.Finished)
 			{
+				//This MUST be done inside this condition because otherwise time will
+				//tick forward during any Update and not only during lerp
+				//Also, if you don't do this first then you encounter another fault
+				//where values will never reach their true final lerp target.
+				lerpTimerService.StepTimeForward();
+				
 				//Tick the lerp forward and broadcast changed value.
 				//For now assume change during lerping.
 				TLerpType lerpValue = ComputeNextLerpValue();
@@ -126,9 +132,7 @@ namespace Uniful
 			if (lerpTimerService.Finished && _DestroyOnFinished)
 				Destroy(this);
 
-			//We should step the time forward for the next update call so
-			//the lerp can continue.
-			lerpTimerService.StepTimeForward();
+
 		}
 	}
 }
