@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Uniful.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,10 +29,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Uniful.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Editor|AnyCPU'">
     <OutputPath>bin\Editor\</OutputPath>
     <DefineConstants>TRACE;DEBUG;UNITY_EDITOR</DefineConstants>
+    <DocumentationFile>bin\Editor\Uniful.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -50,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Audio\OnAudioStoppedPlaying.cs" />
     <Compile Include="GameObject\Transformation\RotateGameObject.cs" />
+    <Compile Include="Input\OnKeyPressed.cs" />
     <Compile Include="Lerp\LerpComponents\ColorLerpComponent.cs" />
     <Compile Include="Lerp\LerpComponents\Vector3LerpComponent.cs" />
     <Compile Include="Lerp\LerpComponents\FloatLerpComponent.cs" />

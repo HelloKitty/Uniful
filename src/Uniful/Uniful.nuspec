@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Uniful</id>
+    <version>$version$</version>
+    <title>Uniful</title>
+    <authors>www.github.com/HelloKitty</authors>
+    <owners>www.github.com/HelloKitty</owners>
+    <licenseUrl>https://github.com/HelloKitty/Uniful</licenseUrl>
+    <projectUrl>https://github.com/HelloKitty/Uniful</projectUrl>
+    <description>Uniful is a collection of useful Unity3D Types and Components.</description>
+    <copyright>Copyright 2015-2016</copyright>
+    <tags>Unity Useful Uniful Unity3D Helpful API Components Shared Help</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\Uniful.xml" target="lib\net35"/>
+    <file src="bin\Release\UnityEngine.dll" target="lib\net35"/>
+  </files>
+</package>
