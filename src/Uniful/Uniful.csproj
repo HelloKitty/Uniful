@@ -36,6 +36,16 @@
     <DefineConstants>TRACE;DEBUG;UNITY_EDITOR</DefineConstants>
     <DocumentationFile>bin\Editor\Uniful.XML</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'IL2CPP|AnyCPU'">
+    <OutputPath>bin\IL2CPP\</OutputPath>
+    <DefineConstants>TRACE;IL2CPP</DefineConstants>
+    <DocumentationFile>bin\Release\Uniful.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
