@@ -1,13 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
 
 namespace Uniful
 {
+	//TODO: Create a video component manager
 	// Requires that we have an AudioSource in case the movie plays sound
 	/// <summary>
 	/// Provides a component that can manage a <see cref="MovieTexture"/> in the scene.
 	/// </summary>
+	[Obsolete("Use Video component.")]
 	[RequireComponent(typeof(AudioSource))]
 	public class MovieMaterialManager : MonoBehaviour
 	{
@@ -19,7 +22,7 @@ namespace Uniful
 		private KeyCode[] skipKeys;
 #pragma warning restore 0649
 
-#if !UNITY_WEBGL
+#if !IL2CPP
 		/// <summary>
 		/// The movie texture that we wish to manipulate that will in turn manipulate any material
 		/// related to it.
@@ -80,7 +83,7 @@ namespace Uniful
 
 		void Awake()
 		{
-#if !UNITY_WEBGL
+#if !IL2CPP
 			movieTextureReference.loop = this.shouldLoop;
 
 			if(playImmediately)
@@ -93,7 +96,7 @@ namespace Uniful
 #endif
 		}
 
-#if !UNITY_WEBGL
+#if !IL2CPP
 		private void FixedUpdate()
 		{
 			if (canSkip && skipKeys != null && skipKeys.Length > 0)
